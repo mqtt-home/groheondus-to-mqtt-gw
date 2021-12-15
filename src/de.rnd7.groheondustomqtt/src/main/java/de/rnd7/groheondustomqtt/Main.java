@@ -19,11 +19,9 @@ public class Main {
         LOGGER.info("Info enabled");
 
         try {
-            final GwMqttClient client = GwMqttClient.start(config.getMqtt()
-                .setDefaultClientId("grohe-mqtt-gw")
-                .setDefaultTopic("grohe"));
-
-            client.online();
+            GwMqttClient.start(config.getMqtt()
+                .setDefaultTopic("grohe"))
+                .online();
 
             new GroheService(config.getGrohe())
                 .start();
