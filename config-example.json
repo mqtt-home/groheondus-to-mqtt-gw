@@ -1,7 +1,14 @@
 {
     "mqtt": {
         "url": "tcp://192.168.2.2:1883",
-        "topic": "grohe"
+        "topic": "grohe",
+        "username": "mqtt_username",
+        "password": "mqtt_password",
+        "retain": true,
+        "qos": 1,
+        "bridge-info": true,
+        "bridge-info-topic": "",
+        "deduplicate": false
     },
     "grohe": {
         "username": "grohe_ondus_user@example.com",
