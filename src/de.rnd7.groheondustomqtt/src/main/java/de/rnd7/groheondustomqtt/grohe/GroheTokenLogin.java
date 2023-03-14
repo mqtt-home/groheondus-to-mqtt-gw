@@ -72,7 +72,9 @@ public class GroheTokenLogin {
 
     private String fetchLocation(final CloseableHttpResponse response) throws IOException {
         if (response.getStatusLine().getStatusCode() != 302) {
-            throw new IOException("Unexpected code while fetching login location. Check your login credentials. Code: " + response.getStatusLine().getStatusCode());
+            final String body = EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8);
+
+            throw new IOException("Unexpected code while fetching login location. Check your login credentials. Code: " + response.getStatusLine().getStatusCode() + " Body: " + body);
         }
 
         final Header[] locations = response.getHeaders("Location");
